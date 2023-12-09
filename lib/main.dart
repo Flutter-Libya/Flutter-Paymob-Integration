@@ -1,8 +1,3 @@
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_paymob_integration/home_screen.dart';
 void main() {runApp(const MyApp());}
