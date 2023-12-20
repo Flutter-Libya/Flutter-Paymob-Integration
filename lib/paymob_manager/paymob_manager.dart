@@ -1,5 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_paymob_integration/constants.dart';
+import 'package:dio/dio.dart';
+
 
 class PaymobManager{
 
@@ -21,8 +22,10 @@ class PaymobManager{
       );
       return paymentKey;
     } catch (e) {
+      
       print("Exc==========================================");
       print(e.toString());
+      
       throw Exception();
     }
   }
@@ -31,7 +34,9 @@ class PaymobManager{
     final Response response=await Dio().post(
       "https://accept.paymob.com/api/auth/tokens",
       data: {
-        "api_key":KConstants.apiKey, 
+
+
+            "api_key":KConstants.apiKey, 
       }
     );
     return response.data["token"];
@@ -52,7 +57,7 @@ class PaymobManager{
         "items": [],
       }
     );
-    return response.data["id"];  //INTGER
+    return response.data["id"];  
   }
   
   Future<String> _getPaymentKey({
@@ -69,7 +74,7 @@ class PaymobManager{
 
         "auth_token": authanticationToken,//From First Api
         "order_id":orderId,//From Second Api  >>(STRING)<<
-        "integration_id": KConstants.cardPaymentMethodIntegrationId,//Integration Id Of The Payment Method
+        "integration_id": KConstants.cardPaymentMethodIntegrationId,
         
         "amount_cents": amount, 
         "currency": currency, 
@@ -95,6 +100,7 @@ class PaymobManager{
       }
     );
     return response.data["token"];
+    //Hello World
   }
 
 }
